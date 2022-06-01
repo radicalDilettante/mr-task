@@ -50,6 +50,8 @@ export default function Contents({ data, cart, setCart }: IProps) {
                 }
 
                 setCart(newCart);
+              } else {
+                alert("Please select a size option!");
               }
               setSize(undefined);
             }}
