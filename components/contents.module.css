@@ -11,12 +11,16 @@
   justify-content: right;
 }
 .image_wrapper img {
-  width: 400px;
+  width: 70%;
+  object-fit: contain;
 }
 
-.detail {
+.detail_wrapper {
   flex: 1;
-  padding: 0 100px;
+}
+.detail {
+  max-width: 400px;
+  margin: 0 auto;
 }
 .detail h1 {
   font-weight: 400;
@@ -63,4 +67,16 @@
 .button:hover {
   background-color: var(--border-dark-grey);
   color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .image_wrapper img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
 }

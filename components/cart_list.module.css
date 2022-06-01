@@ -1,9 +1,23 @@
 .container {
   position: absolute;
   top: calc(100% - 1px);
+  right: 120px;
   width: 20%;
   border: 1px solid var(--border-light-grey);
   z-index: 0;
   background-color: #fff;
   min-height: 100px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    right: 20px;
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 80%;
+  }
 }
