@@ -3,6 +3,7 @@ import styles from "@/pages/index.module.css";
 import Header from "@/components/header";
 import Contents from "@/components/contents";
 import useSWR from "swr";
+import { useState } from "react";
 
 export type Result = {
   id: number;
@@ -17,6 +18,12 @@ export default function Home() {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
   const { data, error } = useSWR<Result>("/api/data", fetcher);
 
+  const [cart, setCart] = useState<{
+    data: Result;
+    size: string;
+    qty: number;
+  }>();
+
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
@@ -27,7 +34,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Contents data={data} />
+      <Contents data={data} setCart={setCart} />
     </div>
   );
 }

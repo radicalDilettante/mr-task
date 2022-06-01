@@ -27,13 +27,6 @@
   display: flex;
   padding: 0;
 }
-.detail li {
-  color: var(--grey-font);
-  border: 1px solid var(--border-light-grey);
-  padding: 10px 20px;
-  margin-right: 5px;
-  cursor: pointer;
-}
 
 .price {
   padding: 5px;
@@ -51,9 +44,12 @@
   color: var(--grey-font);
   font-weight: bold;
 }
-.size span {
+.star {
   font-weight: normal;
   color: var(--required-star);
+}
+.size_status {
+  color: var(--black-font);
 }
 
 .button {

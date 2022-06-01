@@ -1,0 +1,14 @@
+.container {
+  color: var(--grey-font);
+  padding: 10px 20px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid var(--border-dark-grey);
+}
+
+.unselected {
+  border: 1px solid var(--border-light-grey);
+}
