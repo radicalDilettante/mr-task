@@ -14,15 +14,17 @@ export type Result = {
   sizeOptions: { id: number; label: string }[];
 };
 
+export type Cart = {
+  data: Result;
+  size: string;
+  qty: number;
+}[];
+
 export default function Home() {
   const fetcher = (args: string) => fetch(args).then((res) => res.json());
   const { data, error } = useSWR<Result>("/api/data", fetcher);
 
-  const [cart, setCart] = useState<{
-    data: Result;
-    size: string;
-    qty: number;
-  }>();
+  const [cart, setCart] = useState<Cart>([]);
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
@@ -30,11 +32,10 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>MR Frontend Developer Technical Test</title>
       </Head>
-      <Header />
-      <Contents data={data} setCart={setCart} />
+      <Header cart={cart} />
+      <Contents data={data} cart={cart} setCart={setCart} />
     </div>
   );
 }

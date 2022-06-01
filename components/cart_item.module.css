@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  margin: 15px;
+}
+
+.image {
+  width: 70px;
+}
+
+.detail {
+  color: var(--black-font);
+  padding-left: 20px;
+}
+.detail p {
+  margin: 0;
+  margin-bottom: 10px;
+}

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { Result } from "../pages";
+import { Cart, Result } from "../pages";
 import styles from "./contents.module.css";
 import SizeItem from "./size_item";
 
 interface IProps {
   data: Result;
+  cart: Cart;
   setCart: Function;
 }
 
-export default function Contents({ data, setCart }: IProps) {
+export default function Contents({ data, cart, setCart }: IProps) {
   const [size, setSize] = useState<"S" | "M" | "L">();
 
   return (
@@ -34,7 +35,26 @@ export default function Contents({ data, setCart }: IProps) {
             />
           ))}
         </ul>
-        <button className={styles.button}>Add To Cart</button>
+        <button
+          className={styles.button}
+          onClick={() => {
+            if (size) {
+              const newCart = cart.slice();
+
+              if (cart.find((i) => i.size === size)) {
+                const index = newCart.findIndex((i) => i.size === size);
+                newCart[index].qty++;
+              } else {
+                newCart.push({ data: data, size: size, qty: 1 });
+              }
+
+              setCart(newCart);
+            }
+            setSize(undefined);
+          }}
+        >
+          Add To Cart
+        </button>
       </div>
     </section>
   );
