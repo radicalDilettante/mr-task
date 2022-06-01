@@ -1,10 +1,25 @@
 import Head from "next/head";
-import Image from "next/image";
-
 import styles from "@/pages/index.module.css";
 import Header from "@/components/header";
+import Contents from "@/components/contents";
+import useSWR from "swr";
+
+export type Result = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  imageURL: string;
+  sizeOptions: { id: number; label: string }[];
+};
 
 export default function Home() {
+  const fetcher = (args: string) => fetch(args).then((res) => res.json());
+  const { data, error } = useSWR<Result>("/api/data", fetcher);
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,6 +27,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <Contents data={data} />
     </div>
   );
 }
