@@ -1,25 +1,32 @@
-# Next.js + Jest
+# MR Frontend Developer Technical Test
 
-This example shows how to configure Jest to work with Next.js.
+This project is a dev interview task for employment. I build an application with Next.js.
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+## Sample
 
-## How to Use
+[https://mr-task.netlify.app/](https://mr-task.netlify.app/)
 
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
+## Getting started
 
-In your terminal, run the following command:
-
-```bash
-npx create-next-app --example with-jest with-jest-app
-# or
-yarn create next-app --example with-jest with-jest-app
-# or
-pnpm create next-app --example with-jest with-jest-app
+```
+npm install
+npm run build
+npm start
 ```
 
-## Run Jest Tests
+## CORS errors
 
-```bash
-npm test
-```
+The CORS configuration isn't set up for the provided API. I made an API endpoint with Next.js API route feature to proxy.
+
+## Responsive Layout
+
+I used media query to implement responsive layout for mobile client.
+
+## CSS Modules
+
+I made global variables for CSS styling. It helps to get more maintainability.
+
+## To be fixed
+
+- Unit Test
+- Skeleton UI & Loading spinner
